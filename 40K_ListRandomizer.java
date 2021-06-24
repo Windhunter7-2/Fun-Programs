@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-public class ListRandomizer {
+public class 40K_ListRandomizer {
 	
 	//The Units Themselves
 	
