@@ -1,5 +1,3 @@
-package Warhammer_40K;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -7,7 +5,7 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-public class 40K_ListRandomizer {
+public class 40K_ListRandomizer_OldVersion {
 	
 	//The Units Themselves
 	
@@ -33,21 +31,17 @@ public class 40K_ListRandomizer {
 		public int PlatoonCommander = 25;
 		public int CommandSquad = 30;
 		public int SpecialWpnsSquad = 49;
-		public int Kell = 45;
 		public int Veterans = 85;
 		public int Harker = 55;
 		public int KasrkinCmdSquad = 45;
 		public int Techpriest = 35;
 		public int Commissar = 25;
 		public int FleetOfficer = 25;
-		public int Priest = 40;
 		public int OgrBodyguard = 60;
 		public int NorkDeddog = 60;
-		public int Ratlings = 10;	//Each Individual!!!
 		public int Sentinels = 50;	//Each Individual!!!
 		public int LemanRuss = 140;	//Each Individual!!!
 		public int Wyvern = 135;	//Each Individual!!!
-		public int Manticore = 145;
 		public int HvyWpnsTeam = 65;
 		public int Chimera = 70;
 		public int Valkyrie = 165;	//Each Individual!!!
@@ -62,19 +56,7 @@ public class 40K_ListRandomizer {
 		public int tank_LemanRuss = 7;
 		public int tank_Chimera = 3;
 		public int tank_Wyvern = 1;
-		public int tank_Manticore = 1;
 		public int aircraft_Valkyrie = 1;
-		
-		//Categorical Counts
-		public int seniorOfficers;
-		public int mainTroops;
-		public int lemanRusses;
-		public int rerollBuffChars;
-		public int commissars;
-		public int kasrkinsUnits;
-		public int combatUnits;
-		public int vehicles;
-		public int bodyguards;
 		
 		//Total Counts
 		public int Creed;
@@ -93,21 +75,17 @@ public class 40K_ListRandomizer {
 		public int PlatoonCommander;
 		public int CommandSquad;
 		public int SpecialWpnsSquad;
-		public int Kell;
 		public int Veterans;
 		public int Harker;
 		public int KasrkinCmdSquad;
 		public int Techpriest;
 		public int Commissar;
 		public int FleetOfficer;
-		public int Priest;
 		public int OgrBodyguard;
 		public int NorkDeddog;
-		public int Ratlings;
 		public int Sentinels;
 		public int LemanRuss;
 		public int Wyvern;
-		public int Manticore;
 		public int HvyWpnsTeam;
 		public int Chimera;
 		public int Valkyrie;
@@ -130,21 +108,17 @@ public class 40K_ListRandomizer {
 			PlatoonCommander = 0;
 			CommandSquad = 0;
 			SpecialWpnsSquad = 0;
-			Kell = 0;
 			Veterans = 0;
 			Harker = 0;
 			KasrkinCmdSquad = 0;
 			Techpriest = 0;
 			Commissar = 0;
 			FleetOfficer = 0;
-			Priest = 0;
 			OgrBodyguard = 0;
 			NorkDeddog = 0;
-			Ratlings = 0;
 			Sentinels = 0;
 			LemanRuss = 0;
 			Wyvern = 0;
-			Manticore = 0;
 			HvyWpnsTeam = 0;
 			Chimera = 0;
 			Valkyrie = 0;
@@ -189,7 +163,6 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.HQ++;
-				counts.seniorOfficers++;
 			}
 		}
 		
@@ -206,14 +179,12 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.HQ++;
-				counts.seniorOfficers++;
 			}
 		}
 		
 		public void addHQ_TankCommander()
 		{
-			if ( (counts.TankCommander<maxCount) && (pointsSpent <= (pointsAllotted-(costs.TankCommander+65)))
-					&& (tanksAllowed == true)
+			if ( (counts.TankCommander<maxCount) && (pointsSpent <= (pointsAllotted-240)) && (tanksAllowed == true)
 					&& ((regiment.equals(Custom))||(regiment.equals(Cadian))||(regiment.equals(Catchan))
 					||(regiment.equals(Tallarn))) )
 			{
@@ -233,14 +204,12 @@ public class 40K_ListRandomizer {
 				System.out.println("Added: " + name);
 				slots.LemanRusses_HQ++;
 				slots.HQ++;
-				counts.lemanRusses++;
-				counts.vehicles++;
 			}
 		}
 		
 		public void addHQ_Pask()
 		{
-			if ( (counts.Pask<1) && (pointsSpent <= (pointsAllotted-(costs.Pask+65))) && (tanksAllowed == true)
+			if ( (counts.Pask<1) && (pointsSpent <= (pointsAllotted-265)) && (tanksAllowed == true)
 					&& (regiment.equals(Cadian)) )
 			{
 				int lemanRussType = index.randomizeLemanRuss();
@@ -259,14 +228,12 @@ public class 40K_ListRandomizer {
 				System.out.println("Added: " + name);
 				slots.LemanRusses_HQ++;
 				slots.HQ++;
-				counts.lemanRusses++;
-				counts.vehicles++;
 			}
 		}
 		
 		public void addHQ_Yarrick()
 		{
-			if ( (counts.Yarrick<1) && (pointsSpent <= (pointsAllotted-costs.Yarrick)) )
+			if ( (counts.Yarrick<1) && (pointsSpent <= (pointsAllotted-105)) )
 			{
 				int cost = costs.Yarrick;
 				String name = "Commissar Yarrick";
@@ -276,9 +243,6 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.HQ++;
-				counts.commissars++;
-				counts.rerollBuffChars++;
-				counts.combatUnits++;
 			}
 		}
 		
@@ -294,8 +258,6 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.HQ++;
-				counts.commissars++;
-				counts.combatUnits++;
 			}
 		}
 		
@@ -311,8 +273,6 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.HQ++;
-				counts.combatUnits++;
-				counts.seniorOfficers++;
 			}
 		}
 		
@@ -341,7 +301,7 @@ public class 40K_ListRandomizer {
 			if (counts.PrimarisPsyker<maxCount)
 			{
 				int cost = costs.PrimarisPsyker;
-				String name = "Primaris Psyker: Psychic Barrier, Nightshroud";
+				String name = "Primaris Psyker";
 				counts.PrimarisPsyker++;
 				pointsSpent = (pointsSpent + cost);
 				name = (name + " -> " + cost + " Points");
@@ -373,13 +333,12 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.T++;
-				counts.mainTroops++;
 			}
 		}
 		
 		public void addT_Conscripts()
 		{
-			if ( (pointsSpent <= (pointsAllotted-(costs.Conscripts*30)))
+			if ( (pointsSpent <= (pointsAllotted-150))
 					&& ((regiment.equals(Custom))||(regiment.equals(Cadian))||(regiment.equals(Catchan))
 					||(regiment.equals(Tallarn))) )
 			{
@@ -393,61 +352,48 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.T++;
-				counts.mainTroops++;
 			}
 		}
 		
 		public void addT_Kasrkins_Half()
 		{
-			//If *Not* Playing As Kasrkins, No More Than 1 Squad Per 500 Points!
-			if (regiment.equals(Kasrkins) || (counts.Kasrkins_Unit<=(pointsAllotted/500.0)-1))
+			int cost = costs.Kasrkins_Half;
+			String name = "Militarum Tempestus Scions: 1/2 Squad";
+			int voxCaster = roll(2);
+			if (voxCaster == 2)	//50% for Vox-Caster
 			{
-				int cost = costs.Kasrkins_Half;
-				String name = "Militarum Tempestus Scions: 1/2 Squad";
-				if ( regiment.equals(Kasrkins) || (counts.Yarrick>0) || (counts.LordCommissar>0) )
-				{
-					int voxCaster = roll(2);
-					if (voxCaster == 2)	//50% for Vox-Caster
-					{
-						cost = (cost + 5);
-						name = (name + ", Vox-Caster");
-					}
-				}
-				for (int i = 0; i < 2; i++)
-				{
-					int specialWeapon = roll(2);
-					if (specialWeapon == 2)	//50% for Special Weapon
-					{
-						int specialWeaponType = index.randomizeSpecialWeapon(1);
-						cost = (cost + index.specialWeapons_costs[specialWeaponType]);
-						name = (name + ", " + index.specialWeapons_types[specialWeaponType]);
-					}
-				}
-				counts.Kasrkins_Unit++;
-				pointsSpent = (pointsSpent + cost);
-				name = (name + " -> " + cost + " Points");
-				armyList = (armyList + name + "\n");
-				System.out.println("Added: " + name);
-				slots.T++;
-				counts.kasrkinsUnits++;
+				cost = (cost + 5);
+				name = (name + ", Vox-Caster");
 			}
-			
+			for (int i = 0; i < 2; i++)
+			{
+				int specialWeapon = roll(2);
+				if (specialWeapon == 2)	//50% for Special Weapon
+				{
+					int specialWeaponType = index.randomizeSpecialWeapon(1);
+					cost = (cost + index.specialWeapons_costs[specialWeaponType]);
+					name = (name + ", " + index.specialWeapons_types[specialWeaponType]);
+				}
+			}
+			counts.Kasrkins_Unit++;
+			pointsSpent = (pointsSpent + cost);
+			name = (name + " -> " + cost + " Points");
+			armyList = (armyList + name + "\n");
+			System.out.println("Added: " + name);
+			slots.T++;
 		}
 		
 		public void addT_Kasrkins_Full()
 		{
-			if ( (pointsSpent <= (pointsAllotted-(costs.Kasrkins_Full+45))) && (regiment.equals(Kasrkins)) )
+			if ( (pointsSpent <= (pointsAllotted-135)) && (regiment.equals(Kasrkins)) )
 			{
 				int cost = costs.Kasrkins_Full;
 				String name = "Militarum Tempestus Scions: Full Squad";
-				if ( regiment.equals(Kasrkins) || (counts.Yarrick>0) || (counts.LordCommissar>0) )
+				int voxCaster = roll(2);
+				if (voxCaster == 2)	//50% for Vox-Caster
 				{
-					int voxCaster = roll(2);
-					if (voxCaster == 2)	//50% for Vox-Caster
-					{
-						cost = (cost + 5);
-						name = (name + ", Vox-Caster");
-					}
+					cost = (cost + 5);
+					name = (name + ", Vox-Caster");
 				}
 				for (int i = 0; i < 4; i++)
 				{
@@ -465,7 +411,6 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.T++;
-				counts.kasrkinsUnits++;
 			}
 		}
 		
@@ -488,7 +433,9 @@ public class 40K_ListRandomizer {
 		public void add_PlatoonCommander()
 		{
 			if ( (counts.PlatoonCommander<maxCount) && ((regiment.equals(Custom))||(regiment.equals(Cadian))
-					||(regiment.equals(Catchan))||(regiment.equals(Tallarn))) )
+					||(regiment.equals(Catchan))||(regiment.equals(Tallarn)))
+					&& ((counts.PlatoonCommander+(counts.CompanyCommander*2)+(counts.Creed*3)) <
+					(counts.HvyWpnsTeam+counts.Bombardier+counts.Infantry+counts.Veterans)) )
 			{
 				int cost = costs.PlatoonCommander;
 				String name = "Platoon Commander";
@@ -503,8 +450,7 @@ public class 40K_ListRandomizer {
 		
 		public void add_CommandSquad()
 		{
-			if ( (counts.CommandSquad<maxCount) && (counts.CommandSquad<(counts.Bombardier+counts.CompanyCommander
-					+counts.Creed+counts.Pask+counts.PlatoonCommander+counts.Straken+counts.TankCommander))
+			if ( (counts.CommandSquad<maxCount)
 					&& ((regiment.equals(Custom))||(regiment.equals(Cadian))||(regiment.equals(Catchan))
 					||(regiment.equals(Tallarn))) )
 			{
@@ -512,7 +458,7 @@ public class 40K_ListRandomizer {
 				String name = "Command Squad: Medi-Pack";
 				int voxCaster = roll(4);
 				int heavyFlamer = roll(2);
-				int numWeapons = 3;
+				int numWeapons = 4;
 				if (voxCaster != 1)	//75% for Vox-Caster
 				{
 					cost = (cost + 5);
@@ -569,26 +515,9 @@ public class 40K_ListRandomizer {
 			}
 		}
 		
-		public void add_Kell()
-		{
-			if ( (counts.Kell<1) && (regiment.equals(Cadian)) )
-			{
-				int cost = costs.Kell;
-				String name = "Colour Sergeant Kell";
-				counts.Kell++;
-				pointsSpent = (pointsSpent + cost);
-				name = (name + " -> " + cost + " Points");
-				armyList = (armyList + name + "\n");
-				System.out.println("Added: " + name);
-				slots.E++;
-				counts.bodyguards++;
-				counts.seniorOfficers++;
-			}
-		}
-		
 		public void add_Veterans()
 		{
-			if ( (counts.Veterans<maxCount) && (pointsSpent <= (pointsAllotted-(costs.Veterans+30)))
+			if ( (counts.Veterans<maxCount) && (pointsSpent <= (pointsAllotted-115))
 					&& ((regiment.equals(Custom))||(regiment.equals(Cadian))||(regiment.equals(Catchan))
 					||(regiment.equals(Tallarn))) )
 			{
@@ -610,7 +539,6 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.E++;
-				counts.mainTroops++;
 			}
 		}
 		
@@ -626,26 +554,22 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.E++;
-				counts.rerollBuffChars++;
 			}
 		}
 		
 		public void add_KasrkinCmdSquad()
 		{
-			if ( (counts.KasrkinCmdSquad<maxCount) && (counts.KasrkinCmdSquad<counts.TempestorPrime) && (regiment.equals(Kasrkins)) )
+			if ( (counts.KasrkinCmdSquad<maxCount) && (regiment.equals(Kasrkins)) )
 			{
 				int cost = costs.KasrkinCmdSquad;
 				String name = "Militarum Tempestus Command Squad: Medi-Pack";
-				int numWeapons = 3;
-				if ( regiment.equals(Kasrkins) || (counts.Yarrick>0) || (counts.LordCommissar>0) )
+				int voxCaster = roll(4);
+				int numWeapons = 4;
+				if (voxCaster != 1)	//75% for Vox-Caster
 				{
-					int voxCaster = roll(4);
-					if (voxCaster != 1)	//75% for Vox-Caster
-					{
-						cost = (cost + 5);
-						name = (name + ", Vox-Caster");
-						numWeapons--;
-					}
+					cost = (cost + 5);
+					name = (name + ", Vox-Caster");
+					numWeapons--;
 				}
 				for (int i = 0; i < numWeapons; i++)
 				{
@@ -663,13 +587,12 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.E++;
-				counts.kasrkinsUnits++;
 			}
 		}
 		
 		public void add_Techpriest()
 		{
-			if ( counts.Techpriest<maxCount && (tanksAllowed == true) )
+			if (counts.Techpriest<maxCount)
 			{
 				int cost = costs.Techpriest;
 				String name = "Techpriest Enginseer";
@@ -679,7 +602,6 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.E++;
-				counts.combatUnits++;
 			}
 		}
 		
@@ -695,13 +617,12 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.E++;
-				counts.commissars++;
 			}
 		}
 		
 		public void add_FleetOfficer()
 		{
-			if ( counts.FleetOfficer<maxCount && ((counts.FleetOfficer < (counts.Valkyrie))||(regiment.equals(Kasrkins))) )
+			if (counts.FleetOfficer<maxCount)
 			{
 				int cost = costs.FleetOfficer;
 				String name = "Officer of the Fleet";
@@ -711,23 +632,6 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.E++;
-			}
-		}
-		
-		public void add_Priest()
-		{
-			if ( (counts.Priest<maxCount) && ((counts.Priest<( (counts.combatUnits) / 4 ))||(
-					(regiment.equals(Catchan))&&(counts.mainTroops > 3))) )
-			{
-				int cost = costs.Priest;
-				String name = "Ministorum Priest";
-				counts.Priest++;
-				pointsSpent = (pointsSpent + cost);
-				name = (name + " -> " + cost + " Points");
-				armyList = (armyList + name + "\n");
-				System.out.println("Added: " + name);
-				slots.E++;
-				counts.combatUnits++;
 			}
 		}
 		
@@ -743,8 +647,6 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.E++;
-				counts.combatUnits++;
-				counts.bodyguards++;
 			}
 		}
 		
@@ -760,54 +662,28 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.E++;
-				counts.combatUnits++;
-				counts.bodyguards++;
-			}
-		}
-		
-		public void add_Ratlings()
-		{
-			if (counts.Ratlings<1)
-			{
-				int numRatlings = (roll(6) + 4);
-				int cost = (costs.Ratlings * numRatlings);	//Cost of Each
-				String name = ("Ratlings: " + numRatlings + " Guys");
-				counts.Ratlings++;
-				pointsSpent = (pointsSpent + cost);
-				name = (name + " -> " + cost + " Points");
-				armyList = (armyList + name + "\n");
-				System.out.println("Added: " + name);
-				slots.E++;
 			}
 		}
 		
 		public void add_Sentinels()
 		{
-			if ( (counts.Sentinels<maxCount) && (pointsSpent <= (pointsAllotted-((costs.Sentinels*3)+15)))
+			if ( (counts.Sentinels<maxCount) && (pointsSpent <= (pointsAllotted-165))
 					&& ((regiment.equals(Custom))||(regiment.equals(Cadian))||(regiment.equals(Catchan))
 					||(regiment.equals(Tallarn))) )
 			{
-				//Max of 1 for 500, 2 for 1000, 3 for 1500+
-				int numSentinels = roll(pointsAllotted / 500);
-				String name;
-				String weapon = "Missile Launchers";
-				if (pointsAllotted <= 1000)
-					name = "Scout ";	//Scout Sentinels for 500 - 1000 Points
+				int numSentinels = roll(3);
+				String name = ("Armored Sentinels Squadron: " + numSentinels + " Sentinels, Each with ");
+				int whichWeapon = roll(2);
+				if (whichWeapon == 1)
+					name = (name + "Missile Launchers");
 				else
-				{
-					name = "Armored ";	//Armored Sentinels Otherwise
-					//If and Only if 1001+ Points, Randomize Weapon; Otherwise, Only Missile Launchers!
-					int whichWeapon = roll(2);
-					if (whichWeapon == 2)	//Lascannon; Missile Launcher Otherwise
-						weapon = "Lascannons";
-				}
-				name = (name + "Sentinels Squadron: " + numSentinels + " Sentinels, Each with " + weapon);
+					name = (name + "Lascannons");
 				int cost = (costs.Sentinels * numSentinels);
 				int HKM = roll(2);
 				if (HKM == 2)	//50% Chance of Getting HKM
 				{
 					cost = ( cost + (5 * numSentinels) );
-					name = (name + ", Hunter-Killer Missiles");
+					name = (name + ", Hunter-Killer Missile");
 				}
 				counts.Sentinels++;
 				pointsSpent = (pointsSpent + cost);
@@ -815,15 +691,12 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.FA++;
-				//Sentinels Don't Count As Full-on "Vehicles", for the Purposes of Techpriests!
-//				counts.vehicles++;
 			}
 		}
 		
 		public void add_LemanRuss()
 		{
-			if ( (counts.LemanRuss<(maxCount*3)) && (pointsSpent <= (pointsAllotted-(costs.LemanRuss+65)))
-					&& (tanksAllowed == true)
+			if ( (counts.LemanRuss<(maxCount*3)) && (pointsSpent <= (pointsAllotted-205)) && (tanksAllowed == true)
 					&& ((regiment.equals(Custom))||(regiment.equals(Cadian))||(regiment.equals(Catchan))
 					||(regiment.equals(Tallarn))) )
 			{
@@ -848,14 +721,12 @@ public class 40K_ListRandomizer {
 				{
 					slots.LemanRusses = 0;
 				}
-				counts.lemanRusses++;
-				counts.vehicles++;
 			}
 		}
 		
 		public void add_Wyvern()
 		{
-			if ( (counts.Wyvern<(maxCount*3)) && (pointsSpent <= (pointsAllotted-(costs.Wyvern+10))) && (tanksAllowed == true)
+			if ( (counts.Wyvern<(maxCount*3)) && (pointsSpent <= (pointsAllotted-145)) && (tanksAllowed == true)
 					&& ((regiment.equals(Custom))||(regiment.equals(Cadian))||(regiment.equals(Catchan))
 					||(regiment.equals(Tallarn))) )
 			{
@@ -879,32 +750,6 @@ public class 40K_ListRandomizer {
 				{
 					slots.Wyverns = 0;
 				}
-				counts.vehicles++;
-			}
-		}
-		
-		public void add_Manticore()
-		{
-			if ( (counts.Manticore<maxCount) && (pointsSpent <= (pointsAllotted-(costs.Manticore+10))) && (tanksAllowed == true)
-					&& ((regiment.equals(Custom))||(regiment.equals(Cadian))||(regiment.equals(Catchan))
-					||(regiment.equals(Tallarn))) )
-			{
-				int cost = costs.Manticore;
-				String name = "Manticore";
-				int HKM = roll(4);
-				if (HKM != 1)	//75% Chance of Getting HKM
-				{
-					cost = (cost + 10);
-					name = (name + ": Hunter-Killer Missile, Augur Array");
-				}
-				counts.Manticore++;
-				pointsSpent = (pointsSpent + cost);
-				name = (name + " -> " + cost + " Points");
-				armyList = (armyList + name + "\n");
-				System.out.println("Added: " + name);
-				slots.Manticores++;
-				slots.HS++;
-				counts.vehicles++;
 			}
 		}
 		
@@ -918,30 +763,11 @@ public class 40K_ListRandomizer {
 				counts.HvyWpnsTeam++;
 				for (int i = 0; i < 3; i++)
 				{
-					int whichWeapon = roll(4);
-					if (pointsAllotted <= 1000)
-					{
-						//If 500-1000 Points, Make Lascannons Impossible!
-						if (whichWeapon == 2)
-							whichWeapon = roll(3);
-						whichWeapon++;	//Range of 2-4; 3 for Heavy Bolter, 4 for Autocannon
-						if (whichWeapon == 2)
-							whichWeapon = 1;	//Missile Launcher
-					}
+					int whichWeapon = roll(2);
 					if (whichWeapon == 1)
 						name = (name + "(" + i + ") Missile Launcher");
-					else if (whichWeapon == 2)
-						name = (name + "(" + i + ") Lascannon");
-					else if (whichWeapon == 3)
-					{
-						name = (name + "(" + i + ") Heavy Bolter");
-						cost -= 5;
-					}
 					else
-					{
-						name = (name + "(" + i + ") Autocannon");
-						cost -= 5;
-					}
+						name = (name + "(" + i + ") Lascannon");
 					if (i < 2)
 						name = (name + ", ");
 				}
@@ -955,7 +781,10 @@ public class 40K_ListRandomizer {
 		
 		public void add_Chimera()
 		{
-			if ( (counts.Chimera< (counts.combatUnits+counts.mainTroops+counts.seniorOfficers) ) && (tanksAllowed == true)
+			if ( (counts.Chimera< (counts.CommandSquad+counts.HvyWpnsTeam+counts.Infantry+counts.SpecialWpnsSquad+counts.Veterans
+					+counts.Bombardier+counts.Commissar+counts.CompanyCommander+counts.Creed+counts.FleetOfficer+counts.Harker
+					+counts.LordCommissar+counts.NorkDeddog+counts.OgrBodyguard+counts.PlatoonCommander+counts.PrimarisPsyker
+					+counts.Straken+counts.Techpriest+counts.Yarrick) ) && (tanksAllowed == true)
 					&& ((regiment.equals(Custom))||(regiment.equals(Cadian))||(regiment.equals(Catchan))
 					||(regiment.equals(Tallarn))) )
 			{
@@ -974,13 +803,12 @@ public class 40K_ListRandomizer {
 				armyList = (armyList + name + "\n");
 				System.out.println("Added: " + name);
 				slots.Chimeras++;
-				counts.vehicles++;
 			}
 		}
 		
 		public void add_Valkyrie()
 		{
-			if ( (counts.Valkyrie<(maxCount*3)) && (pointsSpent <= (pointsAllotted-costs.Valkyrie)) && (tanksAllowed == true) )
+			if ( (counts.Valkyrie<(maxCount*3)) && (pointsSpent <= (pointsAllotted-165)) && (tanksAllowed == true) )
 			{
 				int cost = costs.Valkyrie;
 				String name = "Valkyrie: Lascannon, Heavy Bolters, Multiple Rocket Pods";
@@ -996,7 +824,6 @@ public class 40K_ListRandomizer {
 				{
 					slots.Valkyries = 0;
 				}
-				counts.vehicles++;
 			}
 		}
 		
@@ -1042,8 +869,8 @@ public class 40K_ListRandomizer {
 			lemanRuss_types[4] = "Battle Cannon/Heavy Bolter Leman Russ";
 			lemanRuss_costs[5] = 20;
 			lemanRuss_types[5] = "Battle Cannon/Heavy Bolter Leman Russ";
-			lemanRuss_costs[6] = 45;
-			lemanRuss_types[6] = "Vanquisher Battle Cannon/Heavy Flamer/Heavy Bolters Leman Russ";
+			lemanRuss_costs[6] = 50;
+			lemanRuss_types[6] = "Battle Cannon/Heavy Flamer/Heavy Bolters Leman Russ";
 			chimera_costs[0] = 15;
 			chimera_types[0] = "*Main* Chimera: Track Guards";
 			chimera_costs[1] = 20;
@@ -1192,34 +1019,34 @@ public class 40K_ListRandomizer {
 		 */
 		public int randomizeSpecialWeapon(int unitType)
 		{
-			int result = roll(30);
-			if ( (result >= 1) && (result <= 8) )
+			int result = roll(20);
+			if (result == 1)
 			{
 				if (unitType == 1)
-					return 5;	//Since Kasrkins Don't Have Sniper Rifles, Just Give Hotshot Volley Gun
+					return randomizeSpecialWeapon(unitType);
 				else
 					return 0;
 			}
-			if ( (result >= 9) && (result <= 11) )
+			if ( (result >= 2) && (result <= 4) )
 			{
 				return 1;
 			}
-			if ( (result >= 12) && (result <= 14) )
+			if (result == 5)
 			{
 				return 2;
 			}
-			if ( (result >= 15) && (result <= 24) )
+			if ( (result >= 6) && (result <= 8) )
 			{
 				return 3;
 			}
-			if ( (result >= 25) && (result <= 39) )
+			if ( (result >= 9) && (result <= 17) )
 			{
 				return 4;
 			}
-			if ( (result >= 40) && (result <= 60) )
+			if ( (result >= 18) && (result <= 20) )
 			{
 				if (unitType == 0)
-					return 4;	//Since Guardsmen Don't Have Hotshots, Just Give Plasma
+					return randomizeSpecialWeapon(unitType);
 				else
 					return 5;
 			}
@@ -1238,201 +1065,123 @@ public class 40K_ListRandomizer {
 	 */
 	public class Lists
 	{
-		public String regiment;	//A Copy of the Current Regiment
-		private int firstOfficer;	//Whether the First Officer Has Been Picked
-		private int firstTroops;	//Whether the First Troops Has Been Picked
-		
 		/**
-		 * Selects All *Main* HQs and Troops.
+		 * Selects an HQ Choice from Its List
+		 * @param num The Choice
 		 */
-		public void getBase()
+		public void getHQ(int num)
 		{
-			//Randomize
-			int baseNum = 1;	//If Not Allowed Vehicles
-			if (pointsAllotted > 1000)
-				baseNum = 2;	//If Allowed Vehicles
-			int randomBase1 = roll(baseNum);
-			int randomBase2 = roll(baseNum + 1);
-			
-			//Make Selection Based on Rolls
-			if (randomBase1 == 1)
-				getBaseA_OfficerAndTroops();
-			if (randomBase1 == 2)
-				getBaseB_tankCmmndrAndTroops();
-			if (randomBase2 == 2)
-				getBaseA_OfficerAndTroops();
-			if (randomBase2 == 3)
-				getBaseB_tankCmmndrAndTroops();
-		}
-		
-		/**
-		 * Selects an HQ Senior Officer (Infantry), As Well As 1-3 Troops
-		 */
-		private void getBaseA_OfficerAndTroops()
-		{
-			//Select Officer
-			if (firstOfficer == 0)
-			{
-				if (regiment.equals(Cadian))
-					units.addHQ_Creed();
-				else if (regiment.equals(Catchan))
-					units.addHQ_Straken();
-				else if (regiment.equals(Kasrkins))
-					units.addHQ_TempestorPrime();
-				else
-					units.addHQ_CompanyCommander();
-				firstOfficer++;
-			}
-			else
-			{
-				if (regiment.equals(Kasrkins))
-					units.addHQ_TempestorPrime();
-				else
-					units.addHQ_CompanyCommander();
-			}
-			
-			//Select Troops
-			getBaseAll_troops();
-		}
-		
-		/**
-		 * Selects a Tank Commander, As Well As 1-3 Troops
-		 */
-		private void getBaseB_tankCmmndrAndTroops()
-		{
-			//Select Officer
-			if (firstOfficer == 0)
-			{
-				if (regiment.equals(Cadian))
-				{
-					if ( (slots.LemanRusses+slots.LemanRusses_HQ) < maxes.tank_LemanRuss )
-						units.addHQ_Pask();
-				}
-				else
-				{
-					if ( (slots.LemanRusses+slots.LemanRusses_HQ) < maxes.tank_LemanRuss )
-						units.addHQ_TankCommander();
-				}
-				firstOfficer++;
-			}
-			else
+			if ( (num >= 1) && (num <= 2) )
+				units.addHQ_Creed();
+			if (num == 3)
+				units.addHQ_CompanyCommander();
+			if ( (num >= 4) && (num <= 5) )
 			{
 				if ( (slots.LemanRusses+slots.LemanRusses_HQ) < maxes.tank_LemanRuss )
 					units.addHQ_TankCommander();
 			}
-			
-			//Select Troops
-			getBaseAll_troops();
+			if (num == 6)
+			{
+				if ( (slots.LemanRusses+slots.LemanRusses_HQ) < maxes.tank_LemanRuss )
+					units.addHQ_Pask();
+			}
+			if ( (num >= 7) && (num <= 10) )
+				units.addHQ_Yarrick();
+			if ( (num >= 11) && (num <= 12) )
+				units.addHQ_LordCommissar();
+			if ( (num >= 13) && (num <= 15) )
+				units.addHQ_Straken();
+			if ( (num >= 16) && (num <= 18) )
+				units.addHQ_TempestorPrime();
+			if ( (num >= 19) && (num <= 20) )
+				units.addHQ_PrimarisPsyker();
 		}
 		
 		/**
-		 * Selects 1-3 Troops (Depending on Army Size)
-		 */
-		private void getBaseAll_troops()
-		{
-			//If Second Iteration of Troops, Calculate How Many
-			int numTroops = slots.T_Min;
-			if (firstTroops > 0)
-			{
-				int diceTreeA = roll(3);
-				int diceTreeB = roll(2);
-				if (diceTreeA == 1)
-					numTroops = 0;
-				if (diceTreeA == 2)
-					numTroops = 1;
-				if (diceTreeA == 3)
-				{
-					if (diceTreeB == 1)
-						numTroops = 2;
-					if (diceTreeB == 2)
-						numTroops = 3;
-				}
-			}
-			
-			//The Troops Themselves
-			for (int i = 0; i < numTroops; i++)
-			{
-				if (slots.T >= slots.T_Max)
-					break;
-				if (regiment.equals(Kasrkins))
-					units.addT_Kasrkins_Full();
-				else
-				{
-					int num = roll(5);
-					if ( (num >= 1) && (num <= 3) )
-						units.addT_Infantry();
-					if ( (num >= 4) && (num <= 5) )
-						units.addT_Conscripts();
-				}
-				firstTroops++;
-			}
-		}
-		
-		/**
-		 * Selects (Only One) of Other Units
-		 */
-		public void getOtherUnits()
-		{
-			int choice = roll(9);
-			if (pointsAllotted > 1000)
-				choice += 3;
-			if ( (choice >= 1) && (choice <= 5) )
-				getMainUnits();
-			if ( (choice >= 6) && (choice <= 7) )
-				getSupportChars();
-			if ( (choice >= 8) && (choice <= 15) )
-			{
-				int num = roll(13);
-				boolean sentinelsOnly = false;
-				if (pointsAllotted <= 1000)
-					sentinelsOnly = true;
-				getVehicles(num, sentinelsOnly);
-			}
-		}
-		
-		/**
-		 * Selects a Vehicle
+		 * Selects a T Choice from Its List
 		 * @param num The Choice
-		 * @param sentinelsOnly Whether Or Not It's a Smaller Battle and Only Sentinels Would Be Allowed
 		 */
-		private void getVehicles(int num, boolean sentinelsOnly)
+		public void getT(int num)
 		{
-			//Heavy Supports
-			if (( (num >= 1) && (num <= 7) ) && (slots.HS < slots.HS_Max) && (!sentinelsOnly))
+			if ( (num >= 1) && (num <= 3) )
+				units.addT_Infantry();
+			if (num == 4)
+				units.addT_Conscripts();
+			if ( (num >= 5) && (num <= 6) )
+				units.addT_Kasrkins_Half();
+			if ( (num >= 7) && (num <= 10) )
+				units.addT_Kasrkins_Full();
+		}
+		
+		/**
+		 * Selects an E Choice from Its List
+		 * @param num The Choice
+		 */
+		public void getE(int num)
+		{
+			if ( (num >= 1) && (num <= 7) )
+				units.add_Bombardier();
+			if (num == 8)
+				units.add_PlatoonCommander();
+			if ( (num >= 9) && (num <= 11) )
+				units.add_CommandSquad();
+			if ( (num >= 12) && (num <= 13) )
+				units.add_SpecialWpnsSquad();
+			if ( (num >= 14) && (num <= 16) )
+				units.add_Veterans();
+			if ( (num >= 17) && (num <= 32) )
+				units.add_Harker();
+			if ( (num >= 33) && (num <= 35) )
+				units.add_KasrkinCmdSquad();
+			if ( (num >= 36) && (num <= 39) )
+				units.add_Techpriest();
+			if (num == 40)
+				units.add_Commissar();
+			if ( (num >= 41) && (num <= 44) )
+				units.add_FleetOfficer();
+			if ( (num >= 45) && (num <= 51) )
+				units.add_OgrBodyguard();
+			if ( (num >= 52) && (num <= 53) )
+				units.add_NorkDeddog();
+		}
+		
+		/**
+		 * Selects a FA Choice from Its List
+		 * @param num The Choice
+		 */
+		public void getFA(int num)
+		{
+			if ( (num >= 54) && (num <= 60) )
+				units.add_Sentinels();
+		}
+		
+		/**
+		 * Selects an HS Choice from Its List
+		 * @param num The Choice
+		 */
+		public void getHS(int num)
+		{
+			if ( (num >= 61) && (num <= 67) )
 			{
-				if ( (num >= 1) && (num <= 2) )
-				{
-					if ( (slots.LemanRusses+slots.LemanRusses_HQ) < maxes.tank_LemanRuss )
-						units.add_LemanRuss();
-				}
-				if ( (num >= 3) && (num <= 4) )
-				{
-					if (slots.Wyverns < maxes.tank_Wyvern)
-						units.add_Wyvern();
-				}
-				if ( (num >= 5) && (num <= 7) )
-				{
-					if (slots.Manticores < maxes.tank_Manticore)
-						units.add_Manticore();
-				}
+				if ( (slots.LemanRusses+slots.LemanRusses_HQ) < maxes.tank_LemanRuss )
+					units.add_LemanRuss();
 			}
-			
-			//Flyers
-			else if (( (num >= 8) && (num <= 9) ) && (slots.Flyer < slots.Flyer_Max) && (!sentinelsOnly))
+			if ( (num >= 68) && (num <= 77) )
 			{
-				if (slots.Valkyries < maxes.aircraft_Valkyrie)
-					units.add_Valkyrie();
+				if (slots.Wyverns < maxes.tank_Wyvern)
+					units.add_Wyvern();
 			}
-			
-			//Fast Attack
-			else if ( (( (num >= 10) && (num <= 11) ) && (slots.FA < slots.FA_Max)) || (sentinelsOnly) )
-			{
-				if (slots.FA < slots.FA_Max)
-					units.add_Sentinels();
-			}
-			
-			//Transports
-			else if (( (num >= 12) && (num <= 13) ) && (slots.Flyer < slots.Flyer_Max) && (!sentinelsOnly))
+			if ( (num >= 78) && (num <= 81) )
+				units.add_HvyWpnsTeam();
+		}
+		
+		/**
+		 * Selects a Transport Choice from Its List
+		 * @param num The Choice
+		 */
+		public void getTransport(int num)
+		{
+			if ( (num >= 82) && (num <= 84) )
 			{
 				if (slots.Chimeras < maxes.tank_Chimera)
 					units.add_Chimera();
@@ -1440,183 +1189,17 @@ public class 40K_ListRandomizer {
 		}
 		
 		/**
-		 * Gets a (Main) Common Squad
-		 */
-		private void getMain_commonSquads()
-		{
-			int choice = roll(6);
-			if ( (choice >= 1) && (choice <= 3) && (slots.E < slots.E_Max) )
-				units.add_Veterans();
-			if ( (choice >= 4) && (choice <= 5) && (slots.E < slots.E_Max) )
-				units.add_Ratlings();
-			if ( (choice == 6) && (slots.HS < slots.HS_Max) )
-				units.add_HvyWpnsTeam();
-		}
-		
-		/**
-		 * Gets a (Main) Uncommon Squad
-		 */
-		private void getMain_uncommonSquads()
-		{
-			//Troops (Kasrkin Basics)
-			int choice = roll(10);
-			if ( (choice >= 1) && (choice <= 2) && (slots.T < slots.T_Max) )
-				units.addT_Kasrkins_Half();
-			
-			//Elites
-			if ( (choice >= 3) && (choice <= 10) && (slots.E < slots.E_Max) )
-			{
-				if ( (choice >= 3) && (choice <= 5) )
-					units.add_CommandSquad();
-				if ( (choice >= 6) && (choice <= 7) )
-					units.add_SpecialWpnsSquad();
-				if ( (choice >= 8) && (choice <= 10) )
-					units.add_KasrkinCmdSquad();
-			}
-		}
-		
-		/**
-		 * Gets a (Main) Character
-		 */
-		private void getMain_chars()
-		{
-			//HQs (Primaris Psykers)
-			int choice = roll(9);
-			if ( (choice >= 1) && (choice <= 2) && (slots.HQ < slots.HQ_Max) )
-				units.addHQ_PrimarisPsyker();
-			
-			//Elites
-			if ( (choice >= 3) && (choice <= 9) && (slots.E < slots.E_Max) )
-			{
-				if ( (choice >= 3) && (choice <= 5) )
-					units.add_Bombardier();
-				if ( (choice >= 6) && (choice <= 7) )
-					units.add_FleetOfficer();
-				if ( (choice >= 8) && (choice <= 9) )
-					units.add_Priest();	//*Technically* a Support Character, but Already Has Stuff in Req. for It!
-			}
-		}
-		
-		/**
-		 * Get a Couple Main Units
-		 */
-		private void getMainUnits()
-		{
-			getMain_commonSquads();
-			int getUncommon = roll(2);
-			if (getUncommon == 2)
-				getMain_uncommonSquads();
-			int getChar = roll(3);
-			if (getChar == 3)
-				getMain_chars();
-		}
-		
-		private boolean rerollerThere = false;
-		
-		/**
-		 * Gets a Support Character That Gives Rerolls
-		 */
-		private void getSupport_rerollers()
-		{
-			//If Already a Reroll Support Character, Return
-			if (rerollerThere)
-				return;
-			
-			//Elite: Harker
-			if ( (slots.E < slots.E_Max) && regiment.equals(Catchan) )
-			{
-				units.add_Harker();
-				rerollerThere = true;
-			}
-			
-			//HQ: Yarrick
-			else if ( (slots.HQ < slots.HQ_Max) && (units.counts.Yarrick<1) )
-			{
-				units.addHQ_Yarrick();
-				rerollerThere = true;
-			}
-		}
-		
-		/**
-		 * Gets a (Support) Commissar
-		 */
-		private void getSupport_commissars()
-		{
-			//HQs
-			int choice = roll(5);
-			if ( (choice >= 1) && (choice <= 4) && (slots.HQ < slots.HQ_Max) )
-			{
-				if ( (choice >= 1) && (choice <= 2) && (units.counts.Yarrick<1) )
-				{
-					if (rerollerThere)
-						units.addHQ_LordCommissar();
-					else
-					{
-						units.addHQ_Yarrick();
-						rerollerThere = true;
-					}
-				}
-				if ( (choice >= 3) && (choice <= 4) )
-					units.addHQ_LordCommissar();
-			}
-			
-			//Elites
-			if ( (choice == 5) && (slots.E < slots.E_Max) )
-				units.add_Commissar();
-		}
-		
-		/**
-		 * Gets a (Support) Bodyguard
-		 */
-		private void getSupport_bodyguards()
-		{
-			if (slots.E < slots.E_Max)
-			{
-				//Kell
-				if ( (regiment.equals(Cadian)) && (units.counts.Creed>0) )
-					units.add_Kell();
-				
-				//Ogryns
-				else
-				{
-					int choice = roll(2);
-					if (choice == 1)
-						units.add_OgrBodyguard();
-					if (choice == 2)
-						units.add_NorkDeddog();
-				}
-			}
-		}
-		
-		/**
-		 * Selects an Appropriate Support Character
+		 * Selects a Flyer Choice from Its List
 		 * @param num The Choice
 		 */
-		private void getSupportChars()
+		public void getFlyer(int num)
 		{
-			//Rerollers
-			if (!rerollerThere)
-				getSupport_rerollers();
-			
-			//Commissars & Platoon Commanders
-			else if (units.counts.mainTroops > (3*(units.counts.commissars+1)))
+			if ( (num >= 85) && (num <= 96) )
 			{
-				int num = roll(2);
-				if (num == 1)
-					getSupport_commissars();
-				else if ( (num == 2) && (slots.E < slots.E_Max) )
-					units.add_PlatoonCommander();
+				if (slots.Valkyries < maxes.aircraft_Valkyrie)
+					units.add_Valkyrie();
 			}
-			
-			//Bodyguards
-			else if ( units.counts.bodyguards < (units.counts.seniorOfficers+units.counts.commissars) )
-				getSupport_bodyguards();
-			
-			//Techpriests
-			else if ( (units.counts.Techpriest < units.counts.vehicles) && (slots.E < slots.E_Max) )
-				units.add_Techpriest();
 		}
-		
 	}
 	
 	
@@ -1647,7 +1230,6 @@ public class 40K_ListRandomizer {
 		public int LemanRusses;
 		public int Chimeras;
 		public int Wyverns;
-		public int Manticores;
 		public int Valkyries;
 		
 		//The Max Numbers of Slots
@@ -1673,7 +1255,6 @@ public class 40K_ListRandomizer {
 			LemanRusses = 0;
 			Chimeras = 0;
 			Wyverns = 0;
-			Manticores = 0;
 			Valkyries = 0;
 			
 			//Patrol Detachment Maxes
@@ -1696,7 +1277,6 @@ public class 40K_ListRandomizer {
 	public String Catchan = "Catchan";
 	public String Tallarn = "Tallarn";
 	public String Kasrkins = "Militarum Tempestus: -> <PREFER> the Longer-Ranged Detachment!!!";
-	public String finalRegiment = "";
 	
 	/**
 	 * How Many Points Allowed for the Army List
@@ -1723,9 +1303,11 @@ public class 40K_ListRandomizer {
 		slots = new Slots();
 		
 		//Set Requirements Based on Inputted Points
-		if (pointsAllotted > 750)
+		if (pointsAllotted > 1000)
 		{
-			//Battalion Detachment Maxes
+			//ONLY 1001+ Points Lists... -> Battalion Detachment Maxes
+			units.maxCount = 3;
+			units.tanksAllowed = true;
 			slots.HQ_Min = 2;
 			slots.HQ_Max = 3;
 			slots.T_Min = 3;
@@ -1734,48 +1316,32 @@ public class 40K_ListRandomizer {
 			slots.FA_Max = 3;
 			slots.HS_Max = 3;
 		}
-		if (pointsAllotted > 1000)
-		{
-			//ONLY 1001+ Points Lists...
-			units.maxCount = 3;
-			units.tanksAllowed = true;
-		}
 		
 		//Choose Regiment
-		int regiment = roll(5);
-		if (regiment == 1)
+		int regiment = roll(6);
+		if ( (regiment == 1) || (regiment == 2) )
 			units.regiment = Custom;
-		if (regiment == 2)
-			units.regiment = Cadian;
 		if (regiment == 3)
-			units.regiment = Catchan;
+			units.regiment = Cadian;
 		if (regiment == 4)
-			units.regiment = Tallarn;
+			units.regiment = Catchan;
 		if (regiment == 5)
+			units.regiment = Tallarn;
+		if (regiment == 6)
 			units.regiment = Kasrkins;
-		
-		//Choose Sub-Regiment (If Kasrkins)
-		finalRegiment = units.regiment;
-		if (units.regiment.equals(Kasrkins))
-		{
-			finalRegiment = "Militarum Tempestus: -> ";
-			int whichKasrkins = roll(6);
-			if ( (whichKasrkins >= 1) && (whichKasrkins <= 2) )
-				finalRegiment = (finalRegiment + "Iotan Dragons");
-			if ( (whichKasrkins >= 3) && (whichKasrkins <= 4) )
-				finalRegiment = (finalRegiment + "Lambdian Lions");
-			if (whichKasrkins == 5)
-				finalRegiment = (finalRegiment + "Psion Jackals");
-			if (whichKasrkins == 6)
-				finalRegiment = (finalRegiment + "Kappic Eagles");
-		}
 		
 		//Do Core Army Building
 		Lists lists = new Lists();
-		lists.regiment = units.regiment;
-		lists.firstOfficer = 0;
-		lists.firstTroops = 0;
-		lists.getBase();
+		while (slots.HQ < slots.HQ_Min)
+		{
+			int choice = roll(20);
+			lists.getHQ(choice);
+		}
+		while (slots.T < slots.T_Min)
+		{
+			int choice = roll(10);
+			lists.getT(choice);
+		}
 		
 		//Do Rest of Army Building
 		long originalTime = System.currentTimeMillis();
@@ -1787,7 +1353,22 @@ public class 40K_ListRandomizer {
 				break;
 			
 			//Army List Construction
-			lists.getOtherUnits();
+			int choice = roll(126);
+			if ( (choice >= 1) && (choice <= 20) && (slots.HQ < slots.HQ_Max) )
+				lists.getHQ(choice);
+			if ( (choice >= 21) && (choice <= 30) && (slots.T < slots.T_Max) )
+				lists.getT(choice - 20);
+			choice = (choice - 30);
+			if ( (choice >= 1) && (choice <= 53) && (slots.E < slots.E_Max) )
+				lists.getE(choice);
+			if ( (choice >= 54) && (choice <= 60) && (slots.FA < slots.FA_Max) )
+				lists.getFA(choice);
+			if ( (choice >= 61) && (choice <= 81) && (slots.HS < slots.HS_Max) )
+				lists.getHS(choice);
+			if ( (choice >= 82) && (choice <= 84) )
+				lists.getTransport(choice);
+			if ( (choice >= 85) && (choice <= 96) && (slots.Flyer < slots.Flyer) )
+				lists.getFlyer(choice);
 		}
 	}
 
@@ -1817,8 +1398,7 @@ public class 40K_ListRandomizer {
 			System.out.println( "Creating Army List #" + (i+1) );
 			createArmyList();
 			String output = ("Points:" + units.pointsSpent + " - List #" + (i+1) + "\n\nRegiment: "
-					+ finalRegiment + "\nWarlord: ____________\nRelic: ____________\nReserves: ____________"
-					+ "\nCP Spent: ____________\nTank Ace(s) (If Applicable): ____________\n\n" + units.armyList + "\n\n");
+					+ units.regiment + "\n" + units.armyList + "\n\n");
 			
 			//File Printing
 			bw.append(output);
